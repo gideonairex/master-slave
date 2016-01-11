@@ -31,6 +31,18 @@ exports.config = {
 				.driver
 				.session_
 				.then( function ( sessionDetails ) {
+
+					// request master to create file 
+					request( {
+						'method' : 'POST',
+						'url'    : 'http://localhost:3400/test-cases/' + id + '/logfile',
+						'body'   : {},
+						'json' : true
+					}, function () {
+						// in preparation for logging
+						// console.log( 'created' );
+					} );
+
 					var session = sessionDetails.id_;
 					var url = 'https://' + env.BROWSERSTACK_USER + ':' + env.BROWSERSTACK_KEY + '@www.browserstack.com/automate/sessions/'+session+'.json';
 					request( {
