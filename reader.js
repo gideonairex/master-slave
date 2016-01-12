@@ -15,7 +15,7 @@ const bufLine         = new Buffer( line, encoding );
 const bufEnd          = new Buffer( end, encoding );
 const bufMessageEnder = new Buffer( messageEnder, encoding );
 
-let remainingBuffers;
+let remainingBuffers = '';
 
 function write () {
 
