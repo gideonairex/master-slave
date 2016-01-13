@@ -79,12 +79,17 @@ module.exports = function ( master ) {
 					'machine'  : request.params.machine
 				};
 
+				let env = {
+					'username' : request.query.username,
+					'password' : request.query.password,
+				};
+
 				let id = request.params.testCaseId || 'TC-20.json';
 				let jsonfilename = _.findWhere( testCases, { 'filename' : id } );
 				let json = require( jsonfilename.file );
 				let command = {
 					'shell'     : './runner.sh',
-					'arguments' : [ escape( JSON.stringify( json ) ), id ]
+					'arguments' : [ escape( JSON.stringify( json ) ), id, escape( JSON.stringify( env ) ) ]
 				};
 
 				console.log( command );
